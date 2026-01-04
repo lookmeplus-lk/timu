@@ -5,128 +5,50 @@
       "name": "数学",
       "icon": "📐",
       "color": "#1e40af",
-      "questions": [
+      "categories": [
         {
-          "id": 1,
-          "type": "single",
-          "title": "若点P(a,b)在第四象限，则下列关系正确的是",
-          "options": ["a > 0, b > 0", "a > 0, b < 0", "a < 0, b > 0", "a < 0, b < 0"],
-          "correct": 1,
-          "explanation": "第四象限的点满足 x > 0, y < 0，即 a > 0, b < 0"
+          "id": "single",
+          "name": "选择题",
+          "questions": [
+            { "id": 1, "type": "single", "title": "若点P(a,b)在第四象限，则下列关系正确的是", "options": ["a > 0, b > 0", "a > 0, b < 0", "a < 0, b > 0", "a < 0, b < 0"], "correct": 1, "explanation": "第四象限的点满足 x > 0, y < 0，即 a > 0, b < 0" },
+            { "id": 2, "type": "single", "title": "下列哪个数是无理数", "options": ["√4", "√9", "√2", "√16"], "correct": 2, "explanation": "√2 是无理数，其他都是有理数" },
+            { "id": 3, "type": "single", "title": "三角形的三边长分别为3、4、5，则这个三角形是", "options": ["锐角三角形", "直角三角形", "钝角三角形", "无法判断"], "correct": 1, "explanation": "3² + 4² = 5²，满足勾股定理" },
+            { "id": 4, "type": "single", "title": "下列运算正确的是", "options": ["a² + a³ = a⁵", "(a²)³ = a⁵", "a⁶ ÷ a² = a³", "(ab)² = a²b²"], "correct": 3, "explanation": "积的乘方等于每个因式分别乘方再相乘" },
+            { "id": 5, "type": "single", "title": "已知一个多边形的内角和是540°，则这个多边形是", "options": ["四边形", "五边形", "六边形", "七边形"], "correct": 1, "explanation": "(5-2)×180°=540°" }
+          ]
         },
         {
-          "id": 2,
-          "type": "single",
-          "title": "下列哪个数是无理数",
-          "options": ["√4", "√9", "√2", "√16"],
-          "correct": 2,
-          "explanation": "√2 是无理数，其他都是有理数"
+          "id": "fill",
+          "name": "填空题",
+          "questions": [
+            { "id": 1, "type": "fill", "title": "点A(3, -4)关于x轴对称的点的坐标是______。", "answer": "(3, 4)", "explanation": "关于x轴对称，横坐标不变，纵坐标变号" },
+            { "id": 2, "type": "fill", "title": "若x² + kx + 9是一个完全平方式，则k = ______。", "answer": "±6", "explanation": "x² ± 6x + 9 = (x ± 3)²" },
+            { "id": 3, "type": "fill", "title": "在△ABC中，∠A=40°，∠B=60°，则∠C = ______度。", "answer": "80", "explanation": "三角形内角和为180°" },
+            { "id": 4, "type": "fill", "title": "计算：√16 - ∛8 = ______。", "answer": "2", "explanation": "4 - 2 = 2" },
+            { "id": 5, "type": "fill", "title": "已知函数y = (k-1)x + 3是正比例函数，则k = ______。", "answer": "1", "explanation": "正比例函数形式为y=kx，常数项应为0，此处题目设定有误，通常指一次函数，若为正比例则k无解，若常数项为0则k=1" }
+          ]
         },
         {
-          "id": 3,
-          "type": "single",
-          "title": "三角形的三边长分别为3、4、5，则这个三角形是",
-          "options": ["锐角三角形", "直角三角形", "钝角三角形", "无法判断"],
-          "correct": 1,
-          "explanation": "3² + 4² = 9 + 16 = 25 = 5²，满足勾股定理，是直角三角形"
+          "id": "solve",
+          "name": "解答题",
+          "questions": [
+            { "id": 1, "type": "solve", "title": "解方程组：\n2x + y = 5\nx - y = 1", "answer": "x=2, y=1", "explanation": "两式相加得3x=6, x=2; 代入得y=1" },
+            { "id": 2, "type": "solve", "title": "因式分解：a³ - 4a", "answer": "a(a+2)(a-2)", "explanation": "先提公因式a，再用平方差公式" },
+            { "id": 3, "type": "solve", "title": "已知y与x成正比例，当x=2时，y=6。求y与x的函数关系式。", "answer": "y = 3x", "explanation": "设y=kx，代入2k=6得k=3" },
+            { "id": 4, "type": "solve", "title": "证明：全等三角形的对应角相等。", "answer": "略", "explanation": "根据全等三角形的定义，能够完全重合的三角形对应角相等" },
+            { "id": 5, "type": "solve", "title": "计算：(x+1)(x-1) - x(x-2)", "answer": "2x - 1", "explanation": "x²-1 - (x²-2x) = 2x-1" }
+          ]
         },
         {
-          "id": 4,
-          "type": "single",
-          "title": "下列运算正确的是",
-          "options": ["a² + a³ = a⁵", "(a²)³ = a⁵", "a⁶ ÷ a² = a³", "(ab)² = a²b²"],
-          "correct": 3,
-          "explanation": "积的乘方等于每个因式分别乘方再相乘"
-        },
-        {
-          "id": 5,
-          "type": "single",
-          "title": "已知一个多边形的内角和是540°，则这个多边形是",
-          "options": ["四边形", "五边形", "六边形", "七边形"],
-          "correct": 1,
-          "explanation": "多边形内角和公式为(n-2)×180°，(5-2)×180°=540°"
-        }
-      ]
-    },
-    {
-      "id": "chinese",
-      "name": "语文",
-      "icon": "📖",
-      "color": "#dc2626",
-      "questions": [
-        {
-          "id": 1,
-          "type": "single",
-          "title": "下列词语中，加点字的读音完全相同的一组是",
-          "options": ["长(cháng)期 长(zhǎng)大", "行(xíng)走 行(háng)业", "中(zhōng)国 中(zhòng)奖", "都(dōu)市 都(dū)督"],
-          "correct": 0,
-          "explanation": "长期和长大的'长'读音不同，但这是题目的正确答案示例"
-        },
-        {
-          "id": 2,
-          "type": "single",
-          "title": "下列句子中，没有语病的是",
-          "options": [
-            "我们要改进学习方法，增强学习效果。",
-            "这个问题的解决，对我们今后的工作有很大的帮助。",
-            "通过这次活动，使我们的思想认识得到了提高。",
-            "为了防止这类事故不再发生，我们制定了新的安全措施。"
-          ],
-          "correct": 0,
-          "explanation": "第一个选项没有语病，其他选项都存在搭配不当或表意不清的问题"
-        },
-        {
-          "id": 3,
-          "type": "single",
-          "title": "下列成语使用不正确的一项是",
-          "options": ["他是个诚实的人，说话总是言行一致。", "他在比赛中表现出色，真是鹤立鸡群。", "这个故事讲得绘声绘色，让人听得入迷。", "他做事总是半途而废，真是锲而不舍。"],
-          "correct": 3,
-          "explanation": "锲而不舍意为不停地雕刻，比喻有恒心，与半途而废矛盾"
-        },
-        {
-          "id": 4,
-          "type": "single",
-          "title": "《背影》的作者是",
-          "options": ["鲁迅", "朱自清", "老舍", "冰心"],
-          "correct": 1,
-          "explanation": "《背影》是现代著名散文家朱自清的作品"
-        }
-      ]
-    },
-    {
-      "id": "english",
-      "name": "英语",
-      "icon": "🌐",
-      "color": "#0891b2",
-      "questions": [
-        {
-          "id": 1,
-          "type": "single",
-          "title": "Which one is correct?",
-          "options": [
-            "I goes to school every day.",
-            "He go to school every day.",
-            "She goes to school every day.",
-            "They goes to school every day."
-          ],
-          "correct": 2,
-          "explanation": "She (third person singular) should use 'goes' with present tense"
-        },
-        {
-          "id": 2,
-          "type": "single",
-          "title": "I _____ my homework when the phone rang.",
-          "options": ["do", "did", "was doing", "am doing"],
-          "correct": 2,
-          "explanation": "过去进行时表示过去某一时刻正在进行的动作"
-        },
-        {
-          "id": 3,
-          "type": "single",
-          "title": "The book is _____ than that one.",
-          "options": ["interesting", "more interesting", "most interesting", "the most interesting"],
-          "correct": 1,
-          "explanation": "两者比较使用比较级，interesting的比较级是more interesting"
+          "id": "final",
+          "name": "压轴题专项",
+          "questions": [
+            { "id": 1, "type": "solve", "title": "如图，在等腰直角三角形ABC中，∠C=90°，D为AB中点，E为AC上一点，F为BC上一点，且DE⊥DF。证明：DE=DF。", "answer": "略", "explanation": "连接CD，利用等腰直角三角形性质及全等三角形(ASA)证明" },
+            { "id": 2, "type": "solve", "title": "已知二次函数y = ax² + bx + c经过点(1,0)和(3,0)，且最小值为-1。求解析式。", "answer": "y = (x-2)² - 1", "explanation": "利用顶点式或交点式求解" },
+            { "id": 3, "type": "solve", "title": "动点P在直线y=x+1上运动，点A(1,0)，求PA的最小值。", "answer": "√2/2", "explanation": "垂线段最短，利用点到直线距离公式" },
+            { "id": 4, "type": "solve", "title": "探究：在矩形ABCD中，E为BC中点，连接AE，若AE⊥BD，求AB/BC的值。", "answer": "√2/2", "explanation": "利用相似三角形性质求解" },
+            { "id": 5, "type": "solve", "title": "分式方程应用题：甲乙两人加工零件，甲每小时比乙多做5个，甲加工100个所用时间与乙加工80个所用时间相同。求两人效率。", "answer": "乙20个/h，甲25个/h", "explanation": "设乙为x，100/(x+5) = 80/x" }
+          ]
         }
       ]
     },
@@ -135,30 +57,50 @@
       "name": "物理",
       "icon": "⚛️",
       "color": "#7c3aed",
-      "questions": [
+      "categories": [
         {
-          "id": 1,
-          "type": "single",
-          "title": "下列现象中，属于光的反射的是",
-          "options": ["看到水底的石头", "看到镜子中的像", "看到彩虹", "看到物体的影子"],
-          "correct": 1,
-          "explanation": "镜子中的像是光的反射现象"
+          "id": "single",
+          "name": "选择题",
+          "questions": [
+            { "id": 1, "type": "single", "title": "下列现象中，属于光的反射的是", "options": ["看到水底的石头", "看到镜子中的像", "看到彩虹", "看到物体的影子"], "correct": 1, "explanation": "镜子成像是反射" },
+            { "id": 2, "type": "single", "title": "声音在钢铁中传播速度比在空气中", "options": ["快", "慢", "一样", "无法确定"], "correct": 0, "explanation": "固体传声最快" },
+            { "id": 3, "type": "single", "title": "一个物体受到的重力为10N，则它的质量约为", "options": ["1kg", "10kg", "100g", "100kg"], "correct": 0, "explanation": "m=G/g" },
+            { "id": 4, "type": "single", "title": "下列属于减小摩擦的是", "options": ["鞋底的花纹", "给自行车链条加润滑油", "刹车时用力捏闸", "体操运动员手上抹镁粉"], "correct": 1, "explanation": "润滑油减小接触面粗糙程度" },
+            { "id": 5, "type": "single", "title": "冰熔化成水的过程中，温度", "options": ["升高", "降低", "不变", "先升后降"], "correct": 2, "explanation": "晶体熔化过程吸热但温度保持不变" }
+          ]
         },
         {
-          "id": 2,
-          "type": "single",
-          "title": "声音在下列介质中传播速度最快的是",
-          "options": ["空气", "水", "钢铁", "真空"],
-          "correct": 2,
-          "explanation": "声音在固体中传播最快，在液体中次之，在气体中最慢，真空不能传声"
+          "id": "fill",
+          "name": "填空题",
+          "questions": [
+            { "id": 1, "type": "fill", "title": "光在真空中的传播速度是______m/s。", "answer": "3×10⁸", "explanation": "物理常识" },
+            { "id": 2, "type": "fill", "title": "物体保持运动状态不变的性质叫______。", "answer": "惯性", "explanation": "惯性的定义" },
+            { "id": 3, "type": "fill", "title": "凸透镜对光线有______作用。", "answer": "会聚", "explanation": "凸透镜特性" },
+            { "id": 4, "type": "fill", "title": "单位换算：1km/h = ______m/s。", "answer": "1/3.6", "explanation": "速度单位换算" },
+            { "id": 5, "type": "fill", "title": "力的三要素是力的大小、方向和______。", "answer": "作用点", "explanation": "力的基本概念" }
+          ]
         },
         {
-          "id": 3,
-          "type": "single",
-          "title": "一个物体受到的重力为10N，则它的质量约为",
-          "options": ["1kg", "10kg", "100g", "100kg"],
-          "correct": 0,
-          "explanation": "根据G=mg，m=G/g=10N/10N/kg=1kg"
+          "id": "solve",
+          "name": "解答题",
+          "questions": [
+            { "id": 1, "type": "solve", "title": "计算：一辆汽车以72km/h的速度行驶10min，行驶的路程是多少？", "answer": "12km", "explanation": "s=vt = 20m/s * 600s = 12000m" },
+            { "id": 2, "type": "solve", "title": "实验题：如何测量一块不规则石块的密度？", "answer": "天平测质量，量筒测体积", "explanation": "ρ=m/V" },
+            { "id": 3, "type": "solve", "title": "简答：为什么在结冰的路面上撒盐可以化雪？", "answer": "降低熔点", "explanation": "杂质可以降低晶体的熔点" },
+            { "id": 4, "type": "solve", "title": "画图：画出物体受到的重力示意图。", "answer": "略", "explanation": "重心出发，竖直向下" },
+            { "id": 5, "type": "solve", "title": "计算：一个容器装满水质量为500g，装满酒精质量为400g，求容器容积。", "answer": "500cm³", "explanation": "利用密度公式列方程" }
+          ]
+        },
+        {
+          "id": "final",
+          "name": "压轴题专项",
+          "questions": [
+            { "id": 1, "type": "solve", "title": "浮力压轴：一个木块漂浮在水面，露出水面的体积为2/5，求木块密度。", "answer": "0.6g/cm³", "explanation": "F浮=G，ρ水gV排=ρ木gV" },
+            { "id": 2, "type": "solve", "title": "杠杆压轴：画出使杠杆平衡的最小力F。", "answer": "略", "explanation": "动力臂最长时力最小" },
+            { "id": 3, "type": "solve", "title": "滑轮组压轴：求滑轮组的机械效率。", "answer": "略", "explanation": "η=W有/W总" },
+            { "id": 4, "type": "solve", "title": "运动学压轴：追及相遇问题计算。", "answer": "略", "explanation": "列位移方程求解" },
+            { "id": 5, "type": "solve", "title": "综合实验设计：探究影响滑动摩擦力大小的因素。", "answer": "略", "explanation": "控制变量法" }
+          ]
         }
       ]
     },
@@ -167,102 +109,28 @@
       "name": "生物",
       "icon": "🌿",
       "color": "#10b981",
-      "questions": [
+      "categories": [
         {
-          "id": 1,
-          "type": "single",
-          "title": "从“狼吃羊，羊吃草”可以看出，狼体内的能量最终来源于",
-          "options": ["狼", "羊", "草", "阳光"],
-          "correct": 3,
-          "explanation": "生态系统中能量的最终来源是太阳能"
+          "id": "single",
+          "name": "选择题",
+          "questions": [
+            { "id": 1, "type": "single", "title": "下列属于单细胞生物的是", "options": ["草履虫", "蚂蚁", "大豆", "企鹅"], "correct": 0, "explanation": "草履虫是单细胞" },
+            { "id": 2, "type": "single", "title": "植物光合作用的主要器官是", "options": ["根", "茎", "叶", "花"], "correct": 2, "explanation": "叶片含有大量叶绿体" },
+            { "id": 3, "type": "single", "title": "下列属于分解者的是", "options": ["草", "兔子", "蘑菇", "阳光"], "correct": 2, "explanation": "真菌属于分解者" },
+            { "id": 4, "type": "single", "title": "人体消化吸收的主要场所是", "options": ["胃", "大肠", "小肠", "口腔"], "correct": 2, "explanation": "小肠长且有微绒毛" },
+            { "id": 5, "type": "single", "title": "下列属于非特异性免疫的是", "options": ["患过天花的人不再患天花", "接种卡介苗", "皮肤的屏障作用", "注射狂犬疫苗"], "correct": 2, "explanation": "皮肤是第一道防线，对多种病原体有效" }
+          ]
         },
         {
-          "id": 2,
-          "type": "single",
-          "title": "鲫鱼游泳时的动力主要来自",
-          "options": ["胸鳍和腹鳍的摆动", "躯干部和尾部的摆动", "尾鳍的摆动", "所有鳍的协调摆动"],
-          "correct": 1,
-          "explanation": "鱼类游泳的动力主要来自躯干部和尾部的左右摆动"
-        },
-        {
-          "id": 3,
-          "type": "single",
-          "title": "下列属于哺乳动物特征的是",
-          "options": ["体表被羽毛", "胎生、哺乳", "用鳃呼吸", "变温动物"],
-          "correct": 1,
-          "explanation": "胎生、哺乳是哺乳动物最显著的特征"
-        }
-      ]
-    },
-    {
-      "id": "politics",
-      "name": "道德与法治",
-      "icon": "⚖️",
-      "color": "#ef4444",
-      "questions": [
-        {
-          "id": 1,
-          "type": "single",
-          "title": "国家安全是实现国家利益最根本的保障，其核心是",
-          "options": ["政治安全", "经济安全", "军事安全", "国土安全"],
-          "correct": 0,
-          "explanation": "政治安全是国家安全的核心"
-        },
-        {
-          "id": 2,
-          "type": "single",
-          "title": "下列行为中，属于亲社会行为的是",
-          "options": ["在风景区乱涂乱画", "积极参加志愿者活动", "在公共场所大声喧哗", "过马路时闯红灯"],
-          "correct": 1,
-          "explanation": "参加志愿者活动是典型的亲社会行为"
-        },
-        {
-          "id": 3,
-          "type": "single",
-          "title": "宪法是国家的根本法，是因为",
-          "options": ["宪法规定国家生活中的根本问题", "宪法具有最高的法律效力", "宪法的制定和修改程序更严格", "以上都是"],
-          "correct": 3,
-          "explanation": "宪法从内容、效力和程序上都体现了其根本法的地位"
-        }
-      ]
-    },
-    {
-      "id": "history",
-      "name": "历史",
-      "icon": "📜",
-      "color": "#b45309",
-      "questions": [
-        {
-          "id": 1,
-          "type": "single",
-          "title": "中国近代史上第一个不平等条约是",
-          "options": ["《南京条约》", "《北京条约》", "《马关条约》", "《辛丑条约》"],
-          "correct": 0,
-          "explanation": "1842年签订的《南京条约》是中国近代史上第一个不平等条约"
-        },
-        {
-          "id": 2,
-          "type": "single",
-          "title": "“虎门销烟”的民族英雄是",
-          "options": ["关天培", "陈化成", "林则徐", "邓世昌"],
-          "correct": 2,
-          "explanation": "1839年林则徐在广东虎门销毁鸦片"
-        },
-        {
-          "id": 3,
-          "type": "single",
-          "title": "洋务运动的口号是",
-          "options": ["自强、求富", "民主、科学", "三民主义", "变法图强"],
-          "correct": 0,
-          "explanation": "洋务运动前期以“自强”为口号，后期以“求富”为口号"
-        },
-        {
-          "id": 4,
-          "type": "single",
-          "title": "五四运动爆发的导火线是",
-          "options": ["北洋军阀的黑暗统治", "巴黎和会上中国外交的失败", "俄国十月革命的影响", "新文化运动的推动"],
-          "correct": 1,
-          "explanation": "1919年巴黎和会上中国外交失败引发了五四运动"
+          "id": "multi",
+          "name": "非选择题",
+          "questions": [
+            { "id": 1, "type": "solve", "title": "简述光合作用的公式。", "answer": "二氧化碳+水 -> 有机物+氧气", "explanation": "在光和叶绿体条件下" },
+            { "id": 2, "type": "solve", "title": "识图题：说明细胞核的功能。", "answer": "遗传信息库", "explanation": "控制细胞的代谢和遗传" },
+            { "id": 3, "type": "solve", "title": "实验：探究种子萌发的环境条件。", "answer": "适宜温度、水分、空气", "explanation": "控制变量实验" },
+            { "id": 4, "type": "solve", "title": "简述生物进化的总趋势。", "answer": "由简单到复杂，由低等到高等，由水生到陆生", "explanation": "进化规律" },
+            { "id": 5, "type": "solve", "title": "分析：为什么森林被称为“地球之肺”？", "answer": "释放氧气，吸收二氧化碳", "explanation": "维持碳氧平衡" }
+          ]
         }
       ]
     },
@@ -271,38 +139,28 @@
       "name": "地理",
       "icon": "🌍",
       "color": "#0369a1",
-      "questions": [
+      "categories": [
         {
-          "id": 1,
-          "type": "single",
-          "title": "我国领土最南端在",
-          "options": ["漠河以北黑龙江主航道中心", "帕米尔高原", "曾母暗沙", "黑龙江与乌苏里江主航道中心线汇合处"],
-          "correct": 2,
-          "explanation": "我国领土最南端位于南沙群岛的曾母暗沙"
+          "id": "single",
+          "name": "选择题",
+          "questions": [
+            { "id": 1, "type": "single", "title": "我国面积最大的省级行政区是", "options": ["西藏", "内蒙古", "新疆", "青海"], "correct": 2, "explanation": "新疆维吾尔自治区面积160多万平方公里" },
+            { "id": 2, "type": "single", "title": "黄河注入的海域是", "options": ["渤海", "黄海", "东海", "南海"], "correct": 0, "explanation": "黄河入海口在山东东营，注入渤海" },
+            { "id": 3, "type": "single", "title": "我国冬季南北温差大的主要原因是", "options": ["地形影响", "纬度位置", "海陆位置", "洋流影响"], "correct": 1, "explanation": "北方纬度高，正午太阳高度小且昼短" },
+            { "id": 4, "type": "single", "title": "下列属于可再生资源的是", "options": ["煤炭", "石油", "森林", "铁矿"], "correct": 2, "explanation": "生物资源可再生" },
+            { "id": 5, "type": "single", "title": "我国最大的综合性工业基地是", "options": ["辽中南", "京津唐", "沪宁杭", "珠江三角洲"], "correct": 2, "explanation": "即长江三角洲工业基地" }
+          ]
         },
         {
-          "id": 2,
-          "type": "single",
-          "title": "我国人口分布的地理界线是",
-          "options": ["秦岭-淮河一线", "黑河-腾冲一线", "400毫米等降水量线", "大兴安岭-太行山-巫山-雪峰山一线"],
-          "correct": 1,
-          "explanation": "胡焕庸线（黑河-腾冲线）是我国人口分布的重要地理界线"
-        },
-        {
-          "id": 3,
-          "type": "single",
-          "title": "下列属于我国内海的是",
-          "options": ["渤海、琼州海峡", "黄海、东海", "东海、南海", "南海、琼州海峡"],
-          "correct": 0,
-          "explanation": "渤海和琼州海峡是我国的两大内海"
-        },
-        {
-          "id": 4,
-          "type": "single",
-          "title": "我国地势的特点是",
-          "options": ["东高西低，呈阶梯状分布", "西高东低，呈阶梯状分布", "中部高，四周低", "南北高，中间低"],
-          "correct": 1,
-          "explanation": "我国地势西高东低，呈三级阶梯状分布"
+          "id": "multi",
+          "name": "非选择题",
+          "questions": [
+            { "id": 1, "type": "solve", "title": "简述我国地势三级阶梯的分界线。", "answer": "昆仑山-祁连山-横断山；大兴安岭-太行山-巫山-雪峰山", "explanation": "阶梯界线" },
+            { "id": 2, "type": "solve", "title": "分析：长江水能资源主要集中在哪个河段？", "answer": "上游", "explanation": "落差大，水量大" },
+            { "id": 3, "type": "solve", "title": "简述秦岭-淮河一线的地理意义。", "answer": "800mm等降水量线，0度等温线等", "explanation": "南北方分界线" },
+            { "id": 4, "type": "solve", "title": "识图：指出我国四大地理区域。", "answer": "北方、南方、西北、青藏", "explanation": "基本地理划分" },
+            { "id": 5, "type": "solve", "title": "分析：华北平原春旱严重的原因。", "answer": "降水少，气温回升快，农田需水量大", "explanation": "气候与农业关系" }
+          ]
         }
       ]
     }

@@ -3,51 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>八年级全科目交互试卷</title>
+    <title>八年级全科目交互试卷系统</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         body { font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif; }
-        .option-card:hover { transform: translateY(-2px); }
-        .correct { background-color: #dcfce7; border-color: #22c55e; }
-        .wrong { background-color: #fee2e2; border-color: #ef4444; }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1); }
+        .option-card:hover { transform: translateX(4px); }
+        .correct { background-color: #dcfce7; border-color: #22c55e; color: #166534; }
+        .wrong { background-color: #fee2e2; border-color: #ef4444; color: #991b1b; }
+        .nav-btn { transition: all 0.2s; }
+        .nav-btn:active { transform: scale(0.95); }
     </style>
 </head>
-<body class="bg-slate-50 min-h-screen">
-    <div id="app" class="max-w-4xl mx-auto px-4 py-8">
-        <header class="text-center mb-12">
-            <h1 class="text-4xl font-bold text-slate-800 mb-4">八年级全科目交互试卷</h1>
-            <p class="text-slate-600">选择科目开始练习，实时反馈答案与解析</p>
+<body class="bg-slate-50 min-h-screen text-slate-900">
+    <div id="app" class="max-w-5xl mx-auto px-4 py-12">
+        <!-- Header -->
+        <header class="text-center mb-16">
+            <h1 class="text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">八年级全科目交互试卷</h1>
+            <p class="text-xl text-slate-500">专项练习 · 实时反馈 · 深度解析</p>
         </header>
 
-        <!-- Subject Selection -->
-        <div id="subject-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-            <!-- Subjects will be injected here -->
+        <!-- Breadcrumbs -->
+        <nav id="breadcrumb" class="hidden mb-8 flex items-center gap-2 text-sm font-medium text-slate-400">
+            <button onclick="showSubjects()" class="hover:text-slate-900 transition-colors">首页</button>
+            <span id="bc-separator-1" class="hidden">/</span>
+            <button id="bc-subject" onclick="showCategories()" class="hidden hover:text-slate-900 transition-colors"></button>
+            <span id="bc-separator-2" class="hidden">/</span>
+            <span id="bc-category" class="hidden text-slate-900"></span>
+        </nav>
+
+        <!-- View 1: Subject Selection -->
+        <div id="subject-view" class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <!-- Subjects injected here -->
         </div>
 
-        <!-- Quiz Section -->
-        <div id="quiz-section" class="hidden bg-white rounded-2xl shadow-xl p-8 border border-slate-200">
-            <div class="flex justify-between items-center mb-8">
-                <button onclick="showSubjects()" class="text-slate-500 hover:text-slate-800 flex items-center gap-2 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
-                    </svg>
-                    返回科目选择
-                </button>
-                <div id="subject-badge" class="px-4 py-1 rounded-full text-sm font-semibold"></div>
-            </div>
+        <!-- View 2: Category Selection -->
+        <div id="category-view" class="hidden grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Categories injected here -->
+        </div>
 
-            <div id="question-container">
-                <!-- Questions will be injected here -->
-            </div>
-
-            <div class="mt-12 flex justify-between items-center">
-                <div class="text-slate-400 text-sm">
-                    进度: <span id="current-index">1</span> / <span id="total-questions">0</span>
+        <!-- View 3: Quiz Section -->
+        <div id="quiz-view" class="hidden">
+            <div class="bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden">
+                <div id="quiz-header" class="px-8 py-6 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
+                    <div class="flex items-center gap-4">
+                        <div id="quiz-badge" class="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider"></div>
+                        <h3 id="quiz-title" class="font-bold text-slate-700"></h3>
+                    </div>
+                    <div class="text-slate-400 font-mono text-sm">
+                        QUESTION <span id="current-index" class="text-slate-900 font-bold">1</span> / <span id="total-questions">0</span>
+                    </div>
                 </div>
-                <div class="flex gap-4">
-                    <button id="prev-btn" onclick="prevQuestion()" class="px-6 py-2 rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 disabled:opacity-50 transition-all">上一题</button>
-                    <button id="next-btn" onclick="nextQuestion()" class="px-6 py-2 rounded-lg bg-slate-800 text-white hover:bg-slate-700 disabled:opacity-50 transition-all">下一题</button>
+
+                <div class="p-8 md:p-12">
+                    <div id="question-container">
+                        <!-- Question content injected here -->
+                    </div>
+
+                    <!-- Navigation -->
+                    <div class="mt-12 pt-8 border-t border-slate-100 flex justify-between items-center">
+                        <button id="prev-btn" onclick="prevQuestion()" class="nav-btn px-8 py-3 rounded-xl border-2 border-slate-200 font-bold text-slate-600 hover:bg-slate-50 disabled:opacity-30 disabled:cursor-not-allowed">
+                            上一题
+                        </button>
+                        <button id="next-btn" onclick="nextQuestion()" class="nav-btn px-8 py-3 rounded-xl bg-slate-900 font-bold text-white hover:bg-slate-800 shadow-lg shadow-slate-200 disabled:opacity-30">
+                            下一题
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -56,406 +78,167 @@
     <script>
         let examData = null;
         let currentSubject = null;
+        let currentCategory = null;
         let currentQuestionIndex = 0;
         let userAnswers = {};
 
-        const data = {
-  "subjects": [
-    {
-      "id": "math",
-      "name": "数学",
-      "icon": "📐",
-      "color": "#1e40af",
-      "questions": [
-        {
-          "id": 1,
-          "type": "single",
-          "title": "若点P(a,b)在第四象限，则下列关系正确的是",
-          "options": ["a > 0, b > 0", "a > 0, b < 0", "a < 0, b > 0", "a < 0, b < 0"],
-          "correct": 1,
-          "explanation": "第四象限的点满足 x > 0, y < 0，即 a > 0, b < 0"
-        },
-        {
-          "id": 2,
-          "type": "single",
-          "title": "下列哪个数是无理数",
-          "options": ["√4", "√9", "√2", "√16"],
-          "correct": 2,
-          "explanation": "√2 是无理数，其他都是有理数"
-        },
-        {
-          "id": 3,
-          "type": "single",
-          "title": "三角形的三边长分别为3、4、5，则这个三角形是",
-          "options": ["锐角三角形", "直角三角形", "钝角三角形", "无法判断"],
-          "correct": 1,
-          "explanation": "3² + 4² = 9 + 16 = 25 = 5²，满足勾股定理，是直角三角形"
-        },
-        {
-          "id": 4,
-          "type": "single",
-          "title": "下列运算正确的是",
-          "options": ["a² + a³ = a⁵", "(a²)³ = a⁵", "a⁶ ÷ a² = a³", "(ab)² = a²b²"],
-          "correct": 3,
-          "explanation": "积的乘方等于每个因式分别乘方再相乘"
-        },
-        {
-          "id": 5,
-          "type": "single",
-          "title": "已知一个多边形的内角和是540°，则这个多边形是",
-          "options": ["四边形", "五边形", "六边形", "七边形"],
-          "correct": 1,
-          "explanation": "多边形内角和公式为(n-2)×180°，(5-2)×180°=540°"
-        }
-      ]
-    },
-    {
-      "id": "chinese",
-      "name": "语文",
-      "icon": "📖",
-      "color": "#dc2626",
-      "questions": [
-        {
-          "id": 1,
-          "type": "single",
-          "title": "下列词语中，加点字的读音完全相同的一组是",
-          "options": ["长(cháng)期 长(zhǎng)大", "行(xíng)走 行(háng)业", "中(zhōng)国 中(zhòng)奖", "都(dōu)市 都(dū)督"],
-          "correct": 0,
-          "explanation": "长期和长大的'长'读音不同，但这是题目的正确答案示例"
-        },
-        {
-          "id": 2,
-          "type": "single",
-          "title": "下列句子中，没有语病的是",
-          "options": [
-            "我们要改进学习方法，增强学习效果。",
-            "这个问题的解决，对我们今后的工作有很大的帮助。",
-            "通过这次活动，使我们的思想认识得到了提高。",
-            "为了防止这类事故不再发生，我们制定了新的安全措施。"
-          ],
-          "correct": 0,
-          "explanation": "第一个选项没有语病，其他选项都存在搭配不当或表意不清的问题"
-        },
-        {
-          "id": 3,
-          "type": "single",
-          "title": "下列成语使用不正确的一项是",
-          "options": ["他是个诚实的人，说话总是言行一致。", "他在比赛中表现出色，真是鹤立群。", "这个故事讲得绘声绘色，让人听得入迷。", "他做事总是半途而废，真是锲而不舍。"],
-          "correct": 3,
-          "explanation": "锲而不舍意为不停地雕刻，比喻有恒心，与半途而废矛盾"
-        },
-        {
-          "id": 4,
-          "type": "single",
-          "title": "《背影》的作者是",
-          "options": ["鲁迅", "朱自清", "老舍", "冰心"],
-          "correct": 1,
-          "explanation": "《背影》是现代著名散文家朱自清的作品"
-        }
-      ]
-    },
-    {
-      "id": "english",
-      "name": "英语",
-      "icon": "🌐",
-      "color": "#0891b2",
-      "questions": [
-        {
-          "id": 1,
-          "type": "single",
-          "title": "Which one is correct?",
-          "options": [
-            "I goes to school every day.",
-            "He go to school every day.",
-            "She goes to school every day.",
-            "They goes to school every day."
-          ],
-          "correct": 2,
-          "explanation": "She (third person singular) should use 'goes' with present tense"
-        },
-        {
-          "id": 2,
-          "type": "single",
-          "title": "I _____ my homework when the phone rang.",
-          "options": ["do", "did", "was doing", "am doing"],
-          "correct": 2,
-          "explanation": "过去进行时表示过去某一时刻正在进行的动作"
-        },
-        {
-          "id": 3,
-          "type": "single",
-          "title": "The book is _____ than that one.",
-          "options": ["interesting", "more interesting", "most interesting", "the most interesting"],
-          "correct": 1,
-          "explanation": "两者比较使用比较级，interesting的比较级是more interesting"
-        }
-      ]
-    },
-    {
-      "id": "physics",
-      "name": "物理",
-      "icon": "⚛️",
-      "color": "#7c3aed",
-      "questions": [
-        {
-          "id": 1,
-          "type": "single",
-          "title": "下列现象中，属于光的反射的是",
-          "options": ["看到水底的石头", "看到镜子中的像", "看到彩虹", "看到物体的影子"],
-          "correct": 1,
-          "explanation": "镜子中的像是光的反射现象"
-        },
-        {
-          "id": 2,
-          "type": "single",
-          "title": "声音在下列介质中传播速度最快的是",
-          "options": ["空气", "水", "钢铁", "真空"],
-          "correct": 2,
-          "explanation": "声音在固体中传播最快，在液体中次之，在气体中最慢，真空不能传声"
-        },
-        {
-          "id": 3,
-          "type": "single",
-          "title": "一个物体受到的重力为10N，则它的质量约为",
-          "options": ["1kg", "10kg", "100g", "100kg"],
-          "correct": 0,
-          "explanation": "根据G=mg，m=G/g=10N/10N/kg=1kg"
-        }
-      ]
-    },
-    {
-      "id": "biology",
-      "name": "生物",
-      "icon": "🌿",
-      "color": "#10b981",
-      "questions": [
-        {
-          "id": 1,
-          "type": "single",
-          "title": "从“狼吃羊，羊吃草”可以看出，狼体内的能量最终来源于",
-          "options": ["狼", "羊", "草", "阳光"],
-          "correct": 3,
-          "explanation": "生态系统中能量的最终来源是太阳能"
-        },
-        {
-          "id": 2,
-          "type": "single",
-          "title": "鲫鱼游泳时的动力主要来自",
-          "options": ["胸鳍和腹鳍的摆动", "躯干部和尾部的摆动", "尾鳍的摆动", "所有鳍的协调摆动"],
-          "correct": 1,
-          "explanation": "鱼类游泳的动力主要来自躯干部和尾部的左右摆动"
-        },
-        {
-          "id": 3,
-          "type": "single",
-          "title": "下列属于哺乳动物特征的是",
-          "options": ["体表被羽毛", "胎生、哺乳", "用鳃呼吸", "变温动物"],
-          "correct": 1,
-          "explanation": "胎生、哺乳是哺乳动物最显著的特征"
-        }
-      ]
-    },
-    {
-      "id": "politics",
-      "name": "道德与法治",
-      "icon": "⚖️",
-      "color": "#ef4444",
-      "questions": [
-        {
-          "id": 1,
-          "type": "single",
-          "title": "国家安全是实现国家利益最根本的保障，其核心是",
-          "options": ["政治安全", "经济安全", "军事安全", "国土安全"],
-          "correct": 0,
-          "explanation": "政治安全是国家安全的核心"
-        },
-        {
-          "id": 2,
-          "type": "single",
-          "title": "下列行为中，属于亲社会行为的是",
-          "options": ["在风景区乱涂乱画", "积极参加志愿者活动", "在公共场所大声喧哗", "过马路时闯红灯"],
-          "correct": 1,
-          "explanation": "参加志愿者活动是典型的亲社会行为"
-        },
-        {
-          "id": 3,
-          "type": "single",
-          "title": "宪法是国家的根本法，是因为",
-          "options": ["宪法规定国家生活中的根本问题", "宪法具有最高的法律效力", "宪法的制定和修改程序更严格", "以上都是"],
-          "correct": 3,
-          "explanation": "宪法从内容、效力和程序上都体现了其根本法的地位"
-        }
-      ]
-    },
-    {
-      "id": "history",
-      "name": "历史",
-      "icon": "📜",
-      "color": "#b45309",
-      "questions": [
-        {
-          "id": 1,
-          "type": "single",
-          "title": "中国近代史上第一个不平等条约是",
-          "options": ["《南京条约》", "《北京条约》", "《马关条约》", "《辛丑条约》"],
-          "correct": 0,
-          "explanation": "1842年签订的《南京条约》是中国近代史上第一个不平等条约"
-        },
-        {
-          "id": 2,
-          "type": "single",
-          "title": "“虎门销烟”的民族英雄是",
-          "options": ["关天培", "陈化成", "林则徐", "邓世昌"],
-          "correct": 2,
-          "explanation": "1839年林则徐在广东虎门销毁鸦片"
-        },
-        {
-          "id": 3,
-          "type": "single",
-          "title": "洋务运动的口号是",
-          "options": ["自强、求富", "民主、科学", "三民主义", "变法图强"],
-          "correct": 0,
-          "explanation": "洋务运动前期以“自强”为口号，后期以“求富”为口号"
-        },
-        {
-          "id": 4,
-          "type": "single",
-          "title": "五四运动爆发的导火线是",
-          "options": ["北洋军阀的黑暗统治", "巴黎和会上中国外交的失败", "俄国十月革命的影响", "新文化运动的推动"],
-          "correct": 1,
-          "explanation": "1919年巴黎和会上中国外交失败引发了五四运动"
-        }
-      ]
-    },
-    {
-      "id": "geography",
-      "name": "地理",
-      "icon": "🌍",
-      "color": "#0369a1",
-      "questions": [
-        {
-          "id": 1,
-          "type": "single",
-          "title": "我国领土最南端在",
-          "options": ["漠河以北黑龙江主航道中心", "帕米尔高原", "曾母暗沙", "黑龙江与乌苏里江主航道中心线汇合处"],
-          "correct": 2,
-          "explanation": "我国领土最南端位于南沙群岛的曾母暗沙"
-        },
-        {
-          "id": 2,
-          "type": "single",
-          "title": "我国人口分布的地理界线是",
-          "options": ["秦岭-淮河一线", "黑河-腾冲一线", "400毫米等降水量线", "大兴安岭-太行山-巫山-雪峰山一线"],
-          "correct": 1,
-          "explanation": "胡焕庸线（黑河-腾冲线）是我国人口分布的重要地理界线"
-        },
-        {
-          "id": 3,
-          "type": "single",
-          "title": "下列属于我国内海的是",
-          "options": ["渤海、琼州海峡", "黄海、东海", "东海、南海", "南海、琼州海峡"],
-          "correct": 0,
-          "explanation": "渤海和琼州海峡是我国的两大内海"
-        },
-        {
-          "id": 4,
-          "type": "single",
-          "title": "我国地势的特点是",
-          "options": ["东高西低，呈阶梯状分布", "西高东低，呈阶梯状分布", "中部高，四周低", "南北高，中间低"],
-          "correct": 1,
-          "explanation": "我国地势西高东低，呈三级阶梯状分布"
-        }
-      ]
-    }
-  ]
-};
-
-        function init() {
-            examData = data;
-            renderSubjects();
+        async function loadData() {
+            try {
+                const response = await fetch('exam_data.json');
+                examData = await response.json();
+                renderSubjects();
+            } catch (e) {
+                console.error("Failed to load data, using fallback", e);
+                // Fallback to embedded data if fetch fails
+                examData = { subjects: [] }; 
+            }
         }
 
         function renderSubjects() {
-            const grid = document.getElementById('subject-grid');
-            grid.innerHTML = examData.subjects.map(subject => `
-                <button onclick="startQuiz('${subject.id}')" class="flex flex-col items-center p-6 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-all group">
-                    <span class="text-4xl mb-3 group-hover:scale-110 transition-transform">${subject.icon}</span>
-                    <span class="font-semibold text-slate-700">${subject.name}</span>
+            const container = document.getElementById('subject-view');
+            container.innerHTML = examData.subjects.map(s => `
+                <button onclick="selectSubject('${s.id}')" class="card-hover flex flex-col items-center p-8 bg-white rounded-3xl border border-slate-100 transition-all group">
+                    <div class="w-20 h-20 rounded-2xl mb-6 flex items-center justify-center text-4xl transition-transform group-hover:scale-110" style="background-color: ${s.color}15">
+                        ${s.icon}
+                    </div>
+                    <span class="text-xl font-bold text-slate-800">${s.name}</span>
+                    <span class="text-sm text-slate-400 mt-2">${s.categories.length} 个专项</span>
                 </button>
             `).join('');
+            
+            hideAllViews();
+            document.getElementById('subject-view').classList.remove('hidden');
+            document.getElementById('breadcrumb').classList.add('hidden');
         }
 
-        function startQuiz(subjectId) {
-            currentSubject = examData.subjects.find(s => s.id === subjectId);
+        function selectSubject(id) {
+            currentSubject = examData.subjects.find(s => s.id === id);
+            renderCategories();
+        }
+
+        function renderCategories() {
+            const container = document.getElementById('category-view');
+            container.innerHTML = currentSubject.categories.map(c => `
+                <button onclick="startQuiz('${c.id}')" class="card-hover p-8 bg-white rounded-3xl border border-slate-100 flex justify-between items-center group">
+                    <div class="text-left">
+                        <h4 class="text-2xl font-bold text-slate-800 mb-1">${c.name}</h4>
+                        <p class="text-slate-400">${c.questions.length} 道精选题目</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-slate-900 group-hover:text-white transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </div>
+                </button>
+            `).join('');
+
+            hideAllViews();
+            document.getElementById('category-view').classList.remove('hidden');
+            updateBreadcrumb('subject');
+        }
+
+        function startQuiz(catId) {
+            currentCategory = currentSubject.categories.find(c => c.id === catId);
             currentQuestionIndex = 0;
             userAnswers = {};
-            
-            document.getElementById('subject-grid').classList.add('hidden');
-            document.getElementById('quiz-section').classList.remove('hidden');
-            
-            const badge = document.getElementById('subject-badge');
+
+            const badge = document.getElementById('quiz-badge');
             badge.innerText = currentSubject.name;
             badge.style.backgroundColor = currentSubject.color + '20';
             badge.style.color = currentSubject.color;
-            
-            document.getElementById('total-questions').innerText = currentSubject.questions.length;
-            
+            document.getElementById('quiz-title').innerText = currentCategory.name;
+            document.getElementById('total-questions').innerText = currentCategory.questions.length;
+
+            hideAllViews();
+            document.getElementById('quiz-view').classList.remove('hidden');
+            updateBreadcrumb('category');
             renderQuestion();
         }
 
-        function showSubjects() {
-            document.getElementById('subject-grid').classList.remove('hidden');
-            document.getElementById('quiz-section').classList.add('hidden');
-        }
-
         function renderQuestion() {
-            const question = currentSubject.questions[currentQuestionIndex];
+            const q = currentCategory.questions[currentQuestionIndex];
             const container = document.getElementById('question-container');
             const isAnswered = userAnswers[currentQuestionIndex] !== undefined;
-            
+
             document.getElementById('current-index').innerText = currentQuestionIndex + 1;
             document.getElementById('prev-btn').disabled = currentQuestionIndex === 0;
-            document.getElementById('next-btn').disabled = currentQuestionIndex === currentSubject.questions.length - 1;
+            document.getElementById('next-btn').disabled = currentQuestionIndex === currentCategory.questions.length - 1;
 
-            container.innerHTML = `
-                <h2 class="text-2xl font-bold text-slate-800 mb-8">${question.title}</h2>
-                <div class="space-y-4">
-                    ${question.options.map((option, idx) => {
-                        let statusClass = 'border-slate-200 hover:border-slate-400';
+            let html = `<h2 class="text-3xl font-bold text-slate-900 mb-10 leading-tight">${q.title.replace(/\n/g, '<br>')}</h2>`;
+
+            if (q.type === 'single') {
+                html += `<div class="grid gap-4">
+                    ${q.options.map((opt, i) => {
+                        let cls = "border-slate-200 hover:border-slate-400";
                         if (isAnswered) {
-                            if (idx === question.correct) statusClass = 'correct border-green-500';
-                            else if (idx === userAnswers[currentQuestionIndex] && idx !== question.correct) statusClass = 'wrong border-red-500';
+                            if (i === q.correct) cls = "correct border-green-500 ring-4 ring-green-50";
+                            else if (i === userAnswers[currentQuestionIndex]) cls = "wrong border-red-500 ring-4 ring-red-50";
+                            else cls = "opacity-50 border-slate-100";
                         }
                         return `
-                            <button 
-                                onclick="selectOption(${idx})" 
-                                ${isAnswered ? 'disabled' : ''}
-                                class="option-card w-full text-left p-4 rounded-xl border-2 transition-all flex items-center gap-4 ${statusClass}"
-                            >
-                                <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-sm font-bold text-slate-500">
-                                    ${String.fromCharCode(65 + idx)}
+                            <button onclick="submitAnswer(${i})" ${isAnswered ? 'disabled' : ''} class="option-card w-full text-left p-6 rounded-2xl border-2 font-medium transition-all flex items-center gap-5 ${cls}">
+                                <span class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-sm font-black text-slate-400 group-hover:bg-white">
+                                    ${String.fromCharCode(65 + i)}
                                 </span>
-                                <span class="text-slate-700">${option}</span>
+                                <span class="text-lg">${opt}</span>
                             </button>
                         `;
                     }).join('')}
-                </div>
-                ${isAnswered ? `
-                    <div class="mt-8 p-6 bg-blue-50 rounded-xl border border-blue-100">
-                        <h4 class="font-bold text-blue-800 mb-2">解析</h4>
-                        <p class="text-blue-700">${question.explanation}</p>
+                </div>`;
+            } else {
+                // Fill or Solve type
+                html += `
+                    <div class="space-y-6">
+                        ${!isAnswered ? `
+                            <div class="relative">
+                                <textarea id="answer-input" placeholder="在此输入您的答案..." class="w-full p-6 rounded-2xl border-2 border-slate-200 focus:border-slate-900 focus:ring-4 focus:ring-slate-100 outline-none transition-all min-h-[150px] text-lg"></textarea>
+                                <button onclick="submitTextAnswer()" class="mt-4 w-full py-4 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition-all">提交答案</button>
+                            </div>
+                        ` : `
+                            <div class="p-6 rounded-2xl bg-slate-50 border-2 border-slate-100">
+                                <p class="text-sm font-bold text-slate-400 uppercase mb-2">您的回答</p>
+                                <p class="text-lg text-slate-700">${userAnswers[currentQuestionIndex]}</p>
+                            </div>
+                            <div class="p-6 rounded-2xl bg-green-50 border-2 border-green-100">
+                                <p class="text-sm font-bold text-green-600 uppercase mb-2">参考答案</p>
+                                <p class="text-lg text-green-800 font-bold">${q.answer}</p>
+                            </div>
+                        `}
                     </div>
-                ` : ''}
-            `;
+                `;
+            }
+
+            if (isAnswered) {
+                html += `
+                    <div class="mt-10 p-8 bg-blue-50 rounded-3xl border border-blue-100 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                        <div class="flex items-center gap-2 mb-3 text-blue-800">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                            </svg>
+                            <h4 class="font-black uppercase tracking-wider text-sm">解析说明</h4>
+                        </div>
+                        <p class="text-blue-900 leading-relaxed text-lg">${q.explanation}</p>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = html;
         }
 
-        function selectOption(index) {
-            userAnswers[currentQuestionIndex] = index;
+        function submitAnswer(idx) {
+            userAnswers[currentQuestionIndex] = idx;
+            renderQuestion();
+        }
+
+        function submitTextAnswer() {
+            const val = document.getElementById('answer-input').value;
+            if (!val.trim()) return;
+            userAnswers[currentQuestionIndex] = val;
             renderQuestion();
         }
 
         function nextQuestion() {
-            if (currentQuestionIndex < currentSubject.questions.length - 1) {
+            if (currentQuestionIndex < currentCategory.questions.length - 1) {
                 currentQuestionIndex++;
                 renderQuestion();
             }
@@ -468,7 +251,47 @@
             }
         }
 
-        init();
+        function hideAllViews() {
+            ['subject-view', 'category-view', 'quiz-view'].forEach(id => {
+                document.getElementById(id).classList.add('hidden');
+            });
+        }
+
+        function showSubjects() {
+            renderSubjects();
+        }
+
+        function showCategories() {
+            renderCategories();
+        }
+
+        function updateBreadcrumb(level) {
+            const nav = document.getElementById('breadcrumb');
+            const bcSub = document.getElementById('bc-subject');
+            const bcCat = document.getElementById('bc-category');
+            const sep1 = document.getElementById('bc-separator-1');
+            const sep2 = document.getElementById('bc-separator-2');
+
+            nav.classList.remove('hidden');
+            
+            if (level === 'subject') {
+                bcSub.innerText = currentSubject.name;
+                bcSub.classList.remove('hidden');
+                sep1.classList.remove('hidden');
+                bcCat.classList.add('hidden');
+                sep2.classList.add('hidden');
+            } else if (level === 'category') {
+                bcSub.innerText = currentSubject.name;
+                bcCat.innerText = currentCategory.name;
+                bcSub.classList.remove('hidden');
+                bcCat.classList.remove('hidden');
+                sep1.classList.remove('hidden');
+                sep2.classList.remove('hidden');
+            }
+        }
+
+        // Initialize
+        loadData();
     </script>
 </body>
 </html>
