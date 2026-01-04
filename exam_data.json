@@ -29,6 +29,22 @@
           "options": ["锐角三角形", "直角三角形", "钝角三角形", "无法判断"],
           "correct": 1,
           "explanation": "3² + 4² = 9 + 16 = 25 = 5²，满足勾股定理，是直角三角形"
+        },
+        {
+          "id": 4,
+          "type": "single",
+          "title": "下列运算正确的是",
+          "options": ["a² + a³ = a⁵", "(a²)³ = a⁵", "a⁶ ÷ a² = a³", "(ab)² = a²b²"],
+          "correct": 3,
+          "explanation": "积的乘方等于每个因式分别乘方再相乘"
+        },
+        {
+          "id": 5,
+          "type": "single",
+          "title": "已知一个多边形的内角和是540°，则这个多边形是",
+          "options": ["四边形", "五边形", "六边形", "七边形"],
+          "correct": 1,
+          "explanation": "多边形内角和公式为(n-2)×180°，(5-2)×180°=540°"
         }
       ]
     },
@@ -58,6 +74,22 @@
           ],
           "correct": 0,
           "explanation": "第一个选项没有语病，其他选项都存在搭配不当或表意不清的问题"
+        },
+        {
+          "id": 3,
+          "type": "single",
+          "title": "下列成语使用不正确的一项是",
+          "options": ["他是个诚实的人，说话总是言行一致。", "他在比赛中表现出色，真是鹤立鸡群。", "这个故事讲得绘声绘色，让人听得入迷。", "他做事总是半途而废，真是锲而不舍。"],
+          "correct": 3,
+          "explanation": "锲而不舍意为不停地雕刻，比喻有恒心，与半途而废矛盾"
+        },
+        {
+          "id": 4,
+          "type": "single",
+          "title": "《背影》的作者是",
+          "options": ["鲁迅", "朱自清", "老舍", "冰心"],
+          "correct": 1,
+          "explanation": "《背影》是现代著名散文家朱自清的作品"
         }
       ]
     },
@@ -79,6 +111,22 @@
           ],
           "correct": 2,
           "explanation": "She (third person singular) should use 'goes' with present tense"
+        },
+        {
+          "id": 2,
+          "type": "single",
+          "title": "I _____ my homework when the phone rang.",
+          "options": ["do", "did", "was doing", "am doing"],
+          "correct": 2,
+          "explanation": "过去进行时表示过去某一时刻正在进行的动作"
+        },
+        {
+          "id": 3,
+          "type": "single",
+          "title": "The book is _____ than that one.",
+          "options": ["interesting", "more interesting", "most interesting", "the most interesting"],
+          "correct": 1,
+          "explanation": "两者比较使用比较级，interesting的比较级是more interesting"
         }
       ]
     },
@@ -95,6 +143,22 @@
           "options": ["看到水底的石头", "看到镜子中的像", "看到彩虹", "看到物体的影子"],
           "correct": 1,
           "explanation": "镜子中的像是光的反射现象"
+        },
+        {
+          "id": 2,
+          "type": "single",
+          "title": "声音在下列介质中传播速度最快的是",
+          "options": ["空气", "水", "钢铁", "真空"],
+          "correct": 2,
+          "explanation": "声音在固体中传播最快，在液体中次之，在气体中最慢，真空不能传声"
+        },
+        {
+          "id": 3,
+          "type": "single",
+          "title": "一个物体受到的重力为10N，则它的质量约为",
+          "options": ["1kg", "10kg", "100g", "100kg"],
+          "correct": 0,
+          "explanation": "根据G=mg，m=G/g=10N/10N/kg=1kg"
         }
       ]
     },
@@ -119,6 +183,14 @@
           "options": ["胸鳍和腹鳍的摆动", "躯干部和尾部的摆动", "尾鳍的摆动", "所有鳍的协调摆动"],
           "correct": 1,
           "explanation": "鱼类游泳的动力主要来自躯干部和尾部的左右摆动"
+        },
+        {
+          "id": 3,
+          "type": "single",
+          "title": "下列属于哺乳动物特征的是",
+          "options": ["体表被羽毛", "胎生、哺乳", "用鳃呼吸", "变温动物"],
+          "correct": 1,
+          "explanation": "胎生、哺乳是哺乳动物最显著的特征"
         }
       ]
     },
@@ -143,6 +215,94 @@
           "options": ["在风景区乱涂乱画", "积极参加志愿者活动", "在公共场所大声喧哗", "过马路时闯红灯"],
           "correct": 1,
           "explanation": "参加志愿者活动是典型的亲社会行为"
+        },
+        {
+          "id": 3,
+          "type": "single",
+          "title": "宪法是国家的根本法，是因为",
+          "options": ["宪法规定国家生活中的根本问题", "宪法具有最高的法律效力", "宪法的制定和修改程序更严格", "以上都是"],
+          "correct": 3,
+          "explanation": "宪法从内容、效力和程序上都体现了其根本法的地位"
+        }
+      ]
+    },
+    {
+      "id": "history",
+      "name": "历史",
+      "icon": "📜",
+      "color": "#b45309",
+      "questions": [
+        {
+          "id": 1,
+          "type": "single",
+          "title": "中国近代史上第一个不平等条约是",
+          "options": ["《南京条约》", "《北京条约》", "《马关条约》", "《辛丑条约》"],
+          "correct": 0,
+          "explanation": "1842年签订的《南京条约》是中国近代史上第一个不平等条约"
+        },
+        {
+          "id": 2,
+          "type": "single",
+          "title": "“虎门销烟”的民族英雄是",
+          "options": ["关天培", "陈化成", "林则徐", "邓世昌"],
+          "correct": 2,
+          "explanation": "1839年林则徐在广东虎门销毁鸦片"
+        },
+        {
+          "id": 3,
+          "type": "single",
+          "title": "洋务运动的口号是",
+          "options": ["自强、求富", "民主、科学", "三民主义", "变法图强"],
+          "correct": 0,
+          "explanation": "洋务运动前期以“自强”为口号，后期以“求富”为口号"
+        },
+        {
+          "id": 4,
+          "type": "single",
+          "title": "五四运动爆发的导火线是",
+          "options": ["北洋军阀的黑暗统治", "巴黎和会上中国外交的失败", "俄国十月革命的影响", "新文化运动的推动"],
+          "correct": 1,
+          "explanation": "1919年巴黎和会上中国外交失败引发了五四运动"
+        }
+      ]
+    },
+    {
+      "id": "geography",
+      "name": "地理",
+      "icon": "🌍",
+      "color": "#0369a1",
+      "questions": [
+        {
+          "id": 1,
+          "type": "single",
+          "title": "我国领土最南端在",
+          "options": ["漠河以北黑龙江主航道中心", "帕米尔高原", "曾母暗沙", "黑龙江与乌苏里江主航道中心线汇合处"],
+          "correct": 2,
+          "explanation": "我国领土最南端位于南沙群岛的曾母暗沙"
+        },
+        {
+          "id": 2,
+          "type": "single",
+          "title": "我国人口分布的地理界线是",
+          "options": ["秦岭-淮河一线", "黑河-腾冲一线", "400毫米等降水量线", "大兴安岭-太行山-巫山-雪峰山一线"],
+          "correct": 1,
+          "explanation": "胡焕庸线（黑河-腾冲线）是我国人口分布的重要地理界线"
+        },
+        {
+          "id": 3,
+          "type": "single",
+          "title": "下列属于我国内海的是",
+          "options": ["渤海、琼州海峡", "黄海、东海", "东海、南海", "南海、琼州海峡"],
+          "correct": 0,
+          "explanation": "渤海和琼州海峡是我国的两大内海"
+        },
+        {
+          "id": 4,
+          "type": "single",
+          "title": "我国地势的特点是",
+          "options": ["东高西低，呈阶梯状分布", "西高东低，呈阶梯状分布", "中部高，四周低", "南北高，中间低"],
+          "correct": 1,
+          "explanation": "我国地势西高东低，呈三级阶梯状分布"
         }
       ]
     }
